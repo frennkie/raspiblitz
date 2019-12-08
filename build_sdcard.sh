@@ -168,6 +168,9 @@ echo ""
 echo "*** CONFIG ***"
 # based on https://github.com/Stadicus/guides/blob/master/raspibolt/raspibolt_20_pi.md#raspi-config
 
+# give Raspi a default hostname (optional)
+sudo raspi-config nonint do_hostname "RaspiBlitz"
+
 # set new default passwort for root user
 echo "root:raspiblitz" | sudo chpasswd
 echo "pi:raspiblitz" | sudo chpasswd
@@ -768,9 +771,6 @@ fi
 if [ "${baseImage}" = "raspbian" ]; then
   echo "Press ENTER to install LCD and reboot ..."
   read key
-
-  # give Raspi a default hostname (optional)
-  sudo raspi-config nonint do_hostname "RaspiBlitz"
 
   # *** Display selection ***
   dialog --title "Display" --yesno "Are you using the default display available from Amazon?\nSelect 'No' if you are using the Swiss version from play-zone.ch!" 6 80
