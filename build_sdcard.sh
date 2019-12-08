@@ -751,6 +751,7 @@ if [ "${baseImage}" = "dietpi" ]; then
   sudo chmod -R 755 LCD-show
   sudo chown -R admin:admin LCD-show
   cd LCD-show/
+  sudo git reset --hard a8de38f
   sudo dpkg -i xinput-calibrator_0.7.5-1_armhf.deb
   # sudo ./LCD35-show
   sudo rm -rf /etc/X11/xorg.conf.d/40-libinput.conf
@@ -783,10 +784,10 @@ if [ "${baseImage}" = "raspbian" ]; then
 
     echo "--> LCD DEFAULT"
     cd /home/admin/
-    sudo apt-mark hold raspberrypi-bootloader
+    # sudo apt-mark hold raspberrypi-bootloader
     git clone https://github.com/goodtft/LCD-show.git
     cd LCD-show/
-    sudo git reset --hard ce52014
+    sudo git reset --hard a8de38f
     cd ..
     sudo chmod -R 755 LCD-show
     sudo chown -R admin:admin LCD-show
