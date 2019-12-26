@@ -22,6 +22,7 @@ from blitztui.client import check_lnd, check_lnd_channels
 from blitztui.client import check_invoice_paid, create_invoice, get_node_uri
 from blitztui.client import convert_r_hash_hex_bytes
 from blitztui.config import LndConfig, RaspiBlitzConfig, RaspiBlitzInfo
+from blitztui.config import load_and_print
 from blitztui.file_watcher import FileWatcherThread
 from blitztui.memo import adjective_noun_pair
 from blitztui.version import __version__
@@ -625,15 +626,16 @@ Keep on stacking SATs..! :-D"""
     parser.add_argument("-V", "--version",
                         help="print version", action="version",
                         version=__version__)
-    #
-    # parser.add_argument("-g", "--game",
-    #                     help="game binary", type=str)
-    #
-    # parser.add_argument("-s", "--skip",
-    #                     help="skip", action="store_true")
+
+    parser.add_argument("-c", "--configtest",
+                        help="Test load and print config", action="store_true")
 
     # parse args
     args = parser.parse_args()
+
+    if args.configtest:
+        load_and_print()
+        sys.exit(0)
 
     # initialize app
     app = QApplication(sys.argv)

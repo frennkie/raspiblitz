@@ -145,7 +145,7 @@ def get_str_clean(cp_section, key, default_value):
     return value.lstrip('"').lstrip("'").rstrip('"').rstrip("'")
 
 
-def main():
+def load_and_print():
     lnd_cfg = LndConfig()
     if os.path.exists(lnd_cfg.abs_path):
         lnd_cfg.reload()
@@ -189,6 +189,10 @@ def main():
         print("==================\n= RaspiBlitzInfo =\n==================")
         print("state: \t\t{}".format(rb_info.state))
         print("")
+
+
+def main():
+    load_and_print()
 
 
 if __name__ == "__main__":

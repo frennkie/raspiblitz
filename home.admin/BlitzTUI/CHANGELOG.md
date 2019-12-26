@@ -5,6 +5,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- add -c option for config test
 
 ## [0.42.0] - 2019-12-25
 ### Added
