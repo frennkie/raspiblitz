@@ -73,6 +73,25 @@ if [ "$1" == "prestart" ]; then
   chown bitcoin:bitcoin ${bitcoinlog_path}
   chmod 600 ${bitcoinlog_path}
 
+  # make sure that there is no empty/invalid (e.g. corrupt) settings.json file
+  settings_json_file="/mnt/hdd/bitcoin/settings.json"
+  # Check if the file exists
+  if [ -f "${settings_json_file}" ]; then
+    #echo "File exists: $settings_json_file"
+    # Check if the file is not empty
+    if [ -s "${settings_json_file}" ]; then
+      #echo "File is not empty."
+      # Validate if the content is valid JSON using jq
+      if ! jq . "${settings_json_file}" >/dev/null 2>&1; then
+        echo "# FAIL: The file \"${settings_json_file}\" exists but contains invalid JSON."
+        exit 1
+      fi
+    else
+      #echo "Error: File exists but is empty. Deleting it now."
+      rm "${settings_json_file}"
+    fi
+  fi
+
   ##### STATISTICS #####
 
   # count startings
