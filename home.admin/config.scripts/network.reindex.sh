@@ -2,7 +2,7 @@
 
 # command info
 if [ $# -eq 0 ] || [ "$1" = "-h" ] || [ "$1" = "-help" ]; then
- echo "script to run re-index if the blockchain - blocks will not be deleted but re-indexed"
+ echo "script to run re-index of the blockchain - blocks will not be deleted but re-indexed"
  echo "will trigger reboot after started and progress can be monitored thru normal sync status"
  echo "There are two ways to re-index - for details see: https://bitcoin.stackexchange.com/a/60711"
  echo "network.reindex.sh reindex [mainnet|testnet|signet] --> re-index chain & repair corrupt blocks"
